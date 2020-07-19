@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Async ball</title>
+    <style>
+      .ball1 {
+        width: 50px;
+        height: 50px;
+        background-color: aqua;
+        border-radius: 50%;
+        transform: translateX(0px);
+      }
+      .ball2 {
+        width: 50px;
+        height: 50px;
+        background-color: darkorange;
+        border-radius: 50%;
+        transform: translateX(0);
+      }
+      .ball3 {
+        width: 50px;
+        height: 50px;
+        background-color: slategrey;
+        border-radius: 50%;
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball ball1"></div>
+    <div class="ball ball2"></div>
+    <div class="ball ball3"></div>
+    <script>
+      const ball1 = document.querySelector(".ball1");
+      const ball2 = document.querySelector(".ball2");
+      const ball3 = document.querySelector(".ball3");
+
+      //callback
+      function move(ball, target, cb) {
+        setTimeout(() => {
+          ball.style.transform = `translateX(${target}px)`;
+          ball.style.transitionDuration = "1s";
+        }, 10);
+
+        setTimeout(() => {
+          return cb();
+        }, 1000);
+      }
+      move(ball1, 100, function () {
+        move(ball2, 100, function () {
+          move(ball3, 100, function () {
+            console.log("over");
+          });
+        });
+      });
+
+      //Promise 用法的 demo
+
+      // let j = 0;
+      // function move(ball, target) {
+      //   return new Promise((resolve) => {
+      //     ball.style.transitionDuration = "1s";
+      //     setTimeout(() => {
+      //       ball.style.transform = `translateX(${target}px)`;
+      //     }, j++ * 1000);
+      //     console.log(j);
+      //     resolve();
+      //   });
+      // }
+      // move(ball1, 100)
+      //   .then(() => {
+      //     move(ball2, 100);
+      //   })
+      //   .then(() => {
+      //     move(ball3, 100);
+      //   })
+      //   .then(() => {
+      //     console.log("over");
+      //   });
+
+      // async/await 用法的 demo
+
+      // let i = 0;
+      // function move(ball, target) {
+      //   setTimeout(() => {
+      //     ball.style.transform = `translateX(${target}px)`;
+      //     ball.style.transitionDuration = "1s";
+      //   }, i++ * 1000);
+      // }
+      // async function go() {
+      //   await move(ball1, 100);
+      //   await move(ball2, 100);
+      //   await move(ball3, 100);
+      // }
+      // go().then((res) => {
+      //   console.log(res);
+      // });
+    </script>
+  </body>
+</html>

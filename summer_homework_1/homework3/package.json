@@ -1,0 +1,20 @@
+{
+  "name": "homework3",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "vue": "^3.0.0-beta.15"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.0-beta.15",
+    "node-sass": "^4.14.1",
+    "sass": "^1.26.10",
+    "sass-loader": "^7.3.1",
+    "style-loader": "^1.2.1",
+    "vite": "^1.0.0-beta.3"
+  }
+}

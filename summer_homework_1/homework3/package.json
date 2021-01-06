@@ -6,7 +6,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "vue": "^3.0.0-beta.15"
   },
   "devDependencies": {
